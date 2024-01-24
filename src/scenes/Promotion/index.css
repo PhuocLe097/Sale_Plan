@@ -1,0 +1,28 @@
+.c-promotions {
+  background: #ffff;
+  padding: 24px;
+  height: 100%;
+  border: 1px solid #f0f0f0;
+}
+.c-promotions .header-promotion {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.c-promotions .header-promotion .Btn-AddPromotion {
+  display: flex;
+  justify-content: end;
+}
+.c-promotions .header-promotion .Field-Search {
+  width: 80%;
+}
+.c-promotions .Table-Promotion {
+  border: 1px solid #dad9d9;
+  border-radius: 5px;
+}
+.c-promotions .ListPromotion-tabs {
+  height: 100%;
+  overflow: auto;
+}
+/*# sourceMappingURL=index.css.map */

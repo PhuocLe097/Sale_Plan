@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: promotion-app
+  namespace: platform-testing
+spec:
+  type: NodePort
+  ports:
+    - name: api
+      port: 3000
+      nodePort: 31731
+      targetPort: api
+  selector:
+    name: promotion-app
+      
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: promotion-app
+  namespace: platform-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: promotion-app
+  template:
+    metadata:
+      labels:
+        name: promotion-app
+    spec:
+      hostNetwork: true
+      hostname: promotion-app
+      subdomain: platform-testing
+      containers:
+      - name: promotion-app
+        command: ["npm", "run", "build-start"]
+        image: vmhub.vietmap.io/platform/vietmap.core.promotion.app:1.0.0
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "0.5"
+        ports:
+        - name: api
+          containerPort: 3000
+          protocol: TCP
+       
+      volumes:
+      - name: promotionapp-vol
+        persistentVolumeClaim:
+          claimName: platform-testing-pvc-new
+      imagePullSecrets:
+      - name: registry-secret
+     

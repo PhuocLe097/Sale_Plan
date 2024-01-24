@@ -1,0 +1,45 @@
+.main {
+  width: 368px;
+  margin: 0 auto;
+}
+.main .icon {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.2);
+  margin-left: 16px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.main .other {
+  text-align: left;
+  margin-top: 24px;
+  line-height: 22px;
+}
+.main .other .register {
+  float: right;
+}
+.container {
+  background-image: url("../../images/version_control.svg");
+  background-repeat: no-repeat;
+  background-position: -5%;
+  background-size: 70%;
+  background-size: auto 80%;
+  background-position-y: 100%;
+  background-color: #f0f2f5;
+}
+.c_main_login {
+  min-width: 450px;
+  max-width: 750px;
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+}
+.c_main_login .login-block {
+  margin-bottom: 10px;
+  border: lightskyblue 1px solid;
+}
+.c_main_login .login-block:last-child {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=index.css.map */

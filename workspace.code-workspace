@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "workspace"
+    }
+   
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules/": true,
+      //"public/": true,
+      "_screenshots":true,
+      ".github":true,
+      "build":true,
+      ".gitignore" :true,
+      "package-lock.json":true
+    },
+    // Forces the tab to be space.
+    // Sd khoảng 4 trắng(    ) thay vì tab (/t).
+    "editor.insertSpaces": true,
+    // The number of spaces a tab is equal to. This setting is overridden
+    // based on the file contents when `editor.detectIndentation` is true.
+    // 1 tab "đổi" được bao nhiêu khoảng trắng (space) từ setting editor.insertSpaces.
+    // Ví dụ trong Visual Studio 2019 nếu nhấn tab thì sẽ được 4 space.
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    "editor.find.cursorMoveOnType": false,
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "msedge",
+        "request": "launch",
+        "name": "Launch debug",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}"
+      }
+    ]
+  }
+}

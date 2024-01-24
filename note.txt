@@ -1,0 +1,2 @@
+  docker build -f Dockerfile -t vmapi/platform:vietmap.core.promotion.app1.0.7 .
+  docker push vmapi/platform:vietmap.core.promotion.app1.0.7

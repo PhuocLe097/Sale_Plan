@@ -1,0 +1,30 @@
+.reactflow-float-button {
+  height: fit-content;
+}
+.reactflow-float-button .warning {
+  color: red;
+}
+.reactflow-float-button .control {
+  color: green;
+}
+.reactflow-float-button .run {
+  color: blue;
+}
+.btn-group {
+  padding: 8px;
+  border-radius: 0 0 0px 5px;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 99999;
+  background-color: white;
+  right: 0;
+}
+.l-content {
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+.l-content .reactflow-content {
+  height: 100%;
+}
+/*# sourceMappingURL=index.css.map */
