@@ -14,60 +14,51 @@ import Header from '../Header';
 const { Content } = Layout;
 
 const AppLayout = React.memo((props: any) => {
-    const { history, location: { pathname } } = props;
-    const { path } = props.match;
-    const [collapsed, setCollapsed] = React.useState(true);
+  const {
+    history,
+    location: { pathname },
+  } = props;
+  const { path } = props.match;
 
-    const onToggle = () => setCollapsed((prevCollapsed) => !prevCollapsed);
-    const onCollapse = () => setCollapsed(!collapsed);
+  const renderLayout = () => {
+    return (
+      <Layout className="root-layout" style={{ minHeight: '100vh', height: '100vh' }}>
+        <SiderMenu path={path} history={history} />
+        <Layout className="app-layout">
+          <Layout.Header
+            style={{ background: '#fff', minHeight: 52, padding: 0 }}
+            className="l-header"
+          >
+            <Header />
+          </Layout.Header>
 
-    const renderLayout = () => {
-        return (
-          <Layout className="root-layout" style={{ minHeight: '100vh', height:'100vh' }}>
-            <SiderMenu
-              path={path}
-              onCollapse={onCollapse}
-              history={history}
-              collapsed={collapsed}
-            />
-            <Layout className="app-layout">
-              <Layout.Header
-                style={{ background: '#fff', minHeight: 52, padding: 0 }}
-                className="l-header"
-              >
-                <Header collapsed={collapsed} toggle={onToggle} />
-              </Layout.Header>
-
-              <Layout.Content className="l-content" >
-                <Switch>
-                  {pathname === '/' && <Redirect from="/" to="/home" />}
-                  {appRouters
-                    .filter((item: any) => !item.isLayout)
-                    .map((route: any, index: number) => {
-                      return (
-                        <Route
-                          key={index}
-                          exact
-                          path={route.path}
-                          render={(props) => (
-                            <ProtectedRoute
-                              component={route.component}
-                              permission={route.permission}
-                            />
-                          )}
-                        />
-                      );
-                    })}
-                  {pathname !== '/' && <NotFoundRoute />}
-                </Switch>
-              </Layout.Content>
-              {/* <Content className="l-content" style={{ margin: 20 }}></Content> */}
-              <Footer />
-            </Layout>
-          </Layout>
-        );
-    }
-    return <DocumentTitle title={utils.getPageTitle(pathname)}>{renderLayout()}</DocumentTitle>;
-})
+          <Layout.Content className="l-content">
+            <Switch>
+              {pathname === '/home' && <Redirect from="/" to="/dashboard" />}
+              {appRouters
+                .filter((item: any) => !item.isLayout)
+                .map((route: any, index: number) => {
+                  return (
+                    <Route
+                      key={index}
+                      exact
+                      path={route.path}
+                      render={(props) => (
+                        <ProtectedRoute component={route.component} permission={route.permission} />
+                      )}
+                    />
+                  );
+                })}
+              {pathname !== '/' && <NotFoundRoute />}
+            </Switch>
+          </Layout.Content>
+          {/* <Content className="l-content" style={{ margin: 20 }}></Content> */}
+          <Footer />
+        </Layout>
+      </Layout>
+    );
+  };
+  return <DocumentTitle title={utils.getPageTitle(pathname)}>{renderLayout()}</DocumentTitle>;
+});
 
 export default AppLayout;

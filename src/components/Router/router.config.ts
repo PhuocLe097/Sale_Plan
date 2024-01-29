@@ -1,15 +1,17 @@
-import LoadableComponent from '../Loadable/index';
 import {
-  HomeOutlined,
-  UserOutlined,
-  TagsOutlined,
-  InfoCircleOutlined,
-  SettingOutlined,
-  UnorderedListOutlined,
-  GiftOutlined,
   DeploymentUnitOutlined,
+  DollarOutlined,
+  GiftOutlined,
+  HomeOutlined,
+  InfoCircleOutlined,
+  ProfileOutlined,
   RadarChartOutlined,
+  SettingOutlined,
+  TagsOutlined,
+  UserOutlined,
+  FundProjectionScreenOutlined,
 } from '@ant-design/icons';
+import LoadableComponent from '../Loadable/index';
 
 export const RouterPath = {
   Dashboard: '/dashboard',
@@ -55,8 +57,26 @@ export const appRouters: any = [
     permission: '',
     title: 'Dashboard',
     icon: HomeOutlined,
-    showInMenu: false,
+    showInMenu: true,
     component: LoadableComponent(() => import('../../scenes/Dashboard')),
+  },
+  {
+    path: '/original-budget',
+    name: 'original-budget',
+    permission: '',
+    title: 'Original Budget',
+    icon: DollarOutlined,
+    showInMenu: true,
+    component: LoadableComponent(() => import('../../scenes/OriginalBudget')),
+  },
+  {
+    path: '/saleplan',
+    name: 'saleplan',
+    permission: '',
+    title: 'Sale Plan',
+    icon: FundProjectionScreenOutlined,
+    showInMenu: true,
+    component: LoadableComponent(() => import('../../scenes/SalePlan')),
   },
   {
     path: '/home',
@@ -64,18 +84,11 @@ export const appRouters: any = [
     permission: '',
     title: 'Home',
     icon: HomeOutlined,
-    showInMenu: true,
+    showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/HomePromotion')),
   },
-  {
-    path: '/promotion',
-    name: 'promotion',
-    permission: '',
-    title: 'Promotion',
-    icon: UnorderedListOutlined,
-    showInMenu: true,
-    component: LoadableComponent(() => import('../../scenes/Promotion')),
-  },
+
+  //For promotion
   {
     path: '/detailpromotion/:id',
     name: 'Detailpromotion',
@@ -151,7 +164,7 @@ export const appRouters: any = [
     title: 'Workflow',
     name: 'workflow',
     icon: DeploymentUnitOutlined,
-    showInMenu: true,
+    showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/workflow')),
   },
   {
