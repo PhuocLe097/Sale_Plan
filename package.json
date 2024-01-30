@@ -35,7 +35,7 @@
     "react-scripts": "5.0.1",
     "react-trello": "^2.2.11",
     "reactflow": "^11.9.4",
-    "recharts": "^2.8.0",
+    "recharts": "^2.11.0",
     "swagger-typescript-api": "^13.0.3",
     "ticks-to-date": "^1.0.3",
     "time-format-ticks": "^1.0.5"

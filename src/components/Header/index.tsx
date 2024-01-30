@@ -1,24 +1,21 @@
-import './index.less';
-import * as React from 'react';
-import { Avatar, Badge, Col, Dropdown, Typography, Row, Space } from 'antd';
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  LogoutOutlined,
   InfoCircleOutlined,
   LockOutlined,
+  LogoutOutlined,
   SettingOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { L } from '../../lib/abpUtility';
-import { Link } from 'react-router-dom';
-import profilePicture from '../../images/user.png';
 import type { MenuProps } from 'antd';
-import SessionStore from '../../stores/sessionStore';
+import { Avatar, Badge, Col, Dropdown, Row, Space, Typography } from 'antd';
 import { inject, observer } from 'mobx-react';
-import Stores from '../../stores/storeIdentifier';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { L } from '../../lib/abpUtility';
 import { GetCurrentLoginInformations } from '../../services/session/dto/getCurrentLoginInformations';
+import SessionStore from '../../stores/sessionStore';
+import Stores from '../../stores/storeIdentifier';
 import { RouterPath } from '../Router/router.config';
+import './index.less';
 
 const { Text } = Typography;
 interface IHeaderProps {
@@ -87,11 +84,14 @@ const Header: React.FC<IHeaderProps> = ({ title, sessionStore }) => {
 
   return (
     <Row className="header-container">
-      <Col
-        style={{ display: 'flex', justifyContent: 'end', paddingRight: 24 }}
-        span={12}
-        offset={12}
-      >
+      <Col span={8}>
+        <p
+          style={{ padding: '0 18px', margin: 0, fontSize: 22, fontWeight: 600, color: '#041529' }}
+        >
+          {title}
+        </p>
+      </Col>
+      <Col style={{ display: 'flex', justifyContent: 'end', paddingRight: 24 }} span={8} offset={8}>
         <Dropdown menu={{ items }} trigger={['click']}>
           <a onClick={(e) => e.preventDefault()}>
             <Badge style={{}}>
