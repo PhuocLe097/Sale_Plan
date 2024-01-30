@@ -1,6 +1,5 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Col, Layout, Menu, Image } from 'antd';
-// import type { MenuProps } from 'antd';
 import * as React from 'react';
 import { L, isGranted } from '../../lib/abpUtility';
 import utils from '../../utils/utils';

@@ -87,6 +87,15 @@ export const appRouters: any = [
     showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/HomePromotion')),
   },
+  {
+    // path: '/original-detail/:id',
+    path: '/original-detail/detail/:id',
+    name: 'OriginalBudgetDetail',
+    permission: '',
+    title: 'Original Budget Detail',
+    showInMenu: false,
+    component: LoadableComponent(() => import('../../scenes/OriginalBudget/Detail')),
+  },
 
   //For promotion
   {
