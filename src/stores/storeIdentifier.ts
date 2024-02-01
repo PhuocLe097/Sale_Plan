@@ -7,10 +7,6 @@ export default class Stores {
     static UserStore: string = 'userStore';
     static SessionStore: string = 'sessionStore';
     static AccountStore: string = 'accountStore';
-    static PromotionStore:string = 'promotionStore';
-    static ProductStore:string = 'productStore';
-    static customerStore:string = 'customerStore';
-    static commonStore:string = 'commonStore';
 }
 
 

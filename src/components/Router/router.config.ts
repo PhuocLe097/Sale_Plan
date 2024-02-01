@@ -13,14 +13,6 @@ import {
 } from '@ant-design/icons';
 import LoadableComponent from '../Loadable/index';
 
-export const RouterPath = {
-  Dashboard: '/dashboard',
-  Members: '/members',
-  Promotion: '/promotion',
-  Deals: '/deals',
-  Setting: '/setting',
-  ProjectDetail: '/project-detail/:id',
-};
 
 export const userRouter: any = [
   {
@@ -64,7 +56,7 @@ export const appRouters: any = [
     path: '/original-budget',
     name: 'original-budget',
     permission: '',
-    title: 'Original Budget',
+    title: 'Original Budget (dự toán)',
     icon: DollarOutlined,
     showInMenu: true,
     component: LoadableComponent(() => import('../../scenes/OriginalBudget')),
@@ -79,17 +71,7 @@ export const appRouters: any = [
     component: LoadableComponent(() => import('../../scenes/SalePlan')),
   },
   {
-    path: '/home',
-    name: 'home',
-    permission: '',
-    title: 'Home',
-    icon: HomeOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/HomePromotion')),
-  },
-  {
-    // path: '/original-detail/:id',
-    path: '/original-detail/detail/:id',
+    path: '/original-Budget/detail/:id',
     name: 'OriginalBudgetDetail',
     permission: '',
     title: 'Original Budget Detail',
@@ -97,24 +79,7 @@ export const appRouters: any = [
     component: LoadableComponent(() => import('../../scenes/OriginalBudget/Detail')),
   },
 
-  //For promotion
-  {
-    path: '/detailpromotion/:id',
-    name: 'Detailpromotion',
-    permission: '',
-    title: 'Detailpromotion',
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/Promotion/detailpromotion')),
-  },
-  {
-    path: '/deals',
-    name: 'deals',
-    permission: '',
-    title: 'Deals',
-    icon: GiftOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/Deals')),
-  },
+
   {
     path: '/setting',
     name: 'setting',
@@ -123,33 +88,6 @@ export const appRouters: any = [
     icon: SettingOutlined,
     showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/Setting')),
-  },
-  {
-    path: '/users',
-    permission: 'Pages.Users',
-    title: 'Users',
-    name: 'user',
-    icon: UserOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/Users')),
-  },
-  {
-    path: '/roles',
-    permission: 'Pages.Roles',
-    title: 'Roles',
-    name: 'role',
-    icon: TagsOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/Roles')),
-  },
-  {
-    path: '/about',
-    permission: '',
-    title: 'About',
-    name: 'about',
-    icon: InfoCircleOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/About')),
   },
   {
     path: '/logout',
@@ -166,24 +104,6 @@ export const appRouters: any = [
     name: 'exception',
     showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/Exception')),
-  },
-  {
-    path: '/workflow',
-    permission: '',
-    title: 'Workflow',
-    name: 'workflow',
-    icon: DeploymentUnitOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/workflow')),
-  },
-  {
-    path: '/flow/:id',
-    permission: '',
-    title: 'Flow',
-    name: 'flow',
-    icon: RadarChartOutlined,
-    showInMenu: false,
-    component: LoadableComponent(() => import('../../scenes/Flow')),
   },
   {
     path: '/exception?:type',

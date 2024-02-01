@@ -50,10 +50,7 @@
     "eject": "react-scripts eject",
     "build-docker": "react-scripts --openssl-legacy-provider build",
     "build-start": "react-scripts --openssl-legacy-provider build && serve -s build",
-    "generate-api": "swagger-typescript-api -p http://k8s-master.vm.local:31725/swagger/v1/swagger.json -o ./src/services/promotionHandler -n promotionHandler.ts",
-    "generate-catalog-api": "swagger-typescript-api -p http://k8s-master.vm.local:31711/swagger/v1/swagger.json -o ./src/services/catalogHandler -n catalogHandler.ts",
-    "generate-customer-api": "swagger-typescript-api -p http://k8s-master.vm.local:31713/swagger/v1/swagger.json -o ./src/services/customerHandler -n customerHandler.ts",
-    "generate-common-api": "swagger-typescript-api -p http://k8s-master.vm.local:31712/swagger/v1/swagger.json -o ./src/services/commonHandler -n commonHandler.ts"
+    "generate-api": "swagger-typescript-api -p http://k8s-master.vm.local:31725/swagger/v1/swagger.json -o ./src/services/promotionHandler -n promotionHandler.ts"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

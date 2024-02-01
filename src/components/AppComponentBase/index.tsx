@@ -13,7 +13,5 @@ class AppComponentBase<P = {}, S = {}, SS = any> extends React.Component<P, S, S
     navigator(path: string) {
       (this.props as any).history.push(path);
     }
-
 }
-
 export default AppComponentBase;

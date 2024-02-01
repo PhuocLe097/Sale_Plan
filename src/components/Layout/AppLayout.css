@@ -22,8 +22,23 @@
 .root-layout .ant-layout-header {
   border-bottom: 1px solid #f0f0f0;
 }
+.root-layout .l-content {
+  height: 100%;
+  overflow: auto;
+}
 .root-layout .footer {
   height: 45px;
   padding: 10px 0 0 0;
+}
+.root-layout ::-webkit-scrollbar {
+  width: 2px;
+  height: 4px;
+}
+.root-layout ::-webkit-scrollbar-thumb {
+  background-color: #1890ff;
+  border-radius: 6px;
+}
+.root-layout ::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
 }
 /*# sourceMappingURL=AppLayout.css.map */

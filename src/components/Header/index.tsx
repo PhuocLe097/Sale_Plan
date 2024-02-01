@@ -14,7 +14,6 @@ import { L } from '../../lib/abpUtility';
 import { GetCurrentLoginInformations } from '../../services/session/dto/getCurrentLoginInformations';
 import SessionStore from '../../stores/sessionStore';
 import Stores from '../../stores/storeIdentifier';
-import { RouterPath } from '../Router/router.config';
 import './index.less';
 
 const { Text } = Typography;
@@ -57,24 +56,24 @@ const Header: React.FC<IHeaderProps> = ({ title, sessionStore }) => {
     {
       type: 'divider',
     },
-    {
-      key: '1',
-      label: <Link to="/">{L('Profile')}</Link>,
-      icon: <InfoCircleOutlined />,
-    },
-    {
-      key: '2',
-      label: <Link to="/">{L('ChangePassword')}</Link>,
-      icon: <LockOutlined />,
-    },
-    {
-      key: '3',
-      label: <Link to={RouterPath.Setting}>{L('Setting')}</Link>,
-      icon: <SettingOutlined />,
-    },
-    {
-      type: 'divider',
-    },
+    // {
+    //   key: '1',
+    //   label: <Link to="/">{L('Profile')}</Link>,
+    //   icon: <InfoCircleOutlined />,
+    // },
+    // {
+    //   key: '2',
+    //   label: <Link to="/">{L('ChangePassword')}</Link>,
+    //   icon: <LockOutlined />,
+    // },
+    // {
+    //   key: '3',
+    //   label: <Link to={RouterPath.Setting}>{L('Setting')}</Link>,
+    //   icon: <SettingOutlined />,
+    // },
+    // {
+    //   type: 'divider',
+    // },
     {
       key: '99',
       label: <Link to="/logout">{L('Logout')}</Link>,

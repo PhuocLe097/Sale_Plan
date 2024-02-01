@@ -60,7 +60,7 @@ const Dashboard: React.FC<DashboardProps> = ({ sessionStore }) => {
       {/* <Board onCardClick={() => {
             console.log('card clicked');
       }} data={data} /> */}
-
+Dashboard
     </React.Fragment>;
 };
 

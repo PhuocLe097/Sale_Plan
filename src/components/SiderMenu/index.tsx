@@ -5,6 +5,7 @@ import { L, isGranted } from '../../lib/abpUtility';
 import utils from '../../utils/utils';
 import { appRouters } from '../Router/router.config';
 import './index.css';
+import { useLocation, useParams } from 'react-router-dom';
 const { Sider } = Layout;
 
 export interface ISiderMenuProps {
@@ -15,20 +16,35 @@ export interface ISiderMenuProps {
 const SiderMenu = (props: ISiderMenuProps) => {
   const { history } = props;
   const currentRoute = utils.getRoute(history.location.pathname);
+  let location = useLocation();
   const [collapsed, setCollapsed] = React.useState(true);
 
   const onCollapse = () => setCollapsed(!collapsed);
   React.useEffect(() => {}, []);
-
+  const path:any = location.pathname.match(/[^/]+/g);
+  const path2 = path[0]
   const getIndex = appRouters
     .filter((item: any) => !item.isLayout && item.showInMenu)
     .find((route: any, index: number) => {
       if (route.permission && !isGranted(route.permission)) return null;
-      if (currentRoute.path === route.path) {
+      if (path2 === route.name) {
         route.index = index;
-        return route;
+        return route;  
       }
     });
+  // const path = currentRoute.path.match(/[^/]+/g);
+  // console.log("🚀 ~ SiderMenu ~ path:", path[0],)
+  // const getIndex = appRouters.filter((item: any)=>
+  // !item.isLayout && item.showInMenu
+  //     // console.log("🚀 ~ SiderMenu ~ item.name:", item.name ,path[0])
+  //     // item.name == path[0]?index:0
+  // ).find((route: any, index: number) => {
+  //       if (route.permission && !isGranted(route.permission)) return null;
+  //       if (currentRoute.name ===route.name) {  
+  //         route.index = index;
+  //         return route;
+  //       }
+  //     });
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -49,7 +65,9 @@ const SiderMenu = (props: ISiderMenuProps) => {
           />
         </Col>
       )}
-      <Menu theme="dark" defaultSelectedKeys={[getIndex ? `${getIndex.index}` : '0']} mode="inline">
+      <Menu theme="dark" 
+      defaultSelectedKeys={[getIndex ? `${getIndex.index}` : '0']} 
+      mode="inline">
         {appRouters
           .filter((item: any) => !item.isLayout && item.showInMenu)
           .map((route: any, index: number) => {
