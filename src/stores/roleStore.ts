@@ -20,8 +20,7 @@ class RoleStore {
   async create(createRoleInput: CreateRoleInput) {
     await roleService.create(createRoleInput);
   }
-
-  
+ 
   @action
   async createRole() {
     this.roleEdit = {
