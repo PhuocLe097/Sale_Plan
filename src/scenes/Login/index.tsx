@@ -37,10 +37,10 @@ const Login: React.FC<ILoginProps> = ({ authenticationStore, accountStore, locat
 
     await authenticationStore!.login(values);
     const { state } = location;
-    window.location = state ? state.from.pathname : '/';
+    window.location = state ? state.from.pathname : '/dashboard';
   };
 
-  const { from } = location.state || { from: { pathname: '/' } };
+  const { from } = location.state || { from: { pathname: '/dashboard' } };
   if (authenticationStore!.isAuthenticated) return <Redirect to={from} />;
 
   return (

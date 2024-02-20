@@ -20,14 +20,14 @@ const AppLayout = React.memo((props: any) => {
   } = props;
   const { path } = props.match;
   // console.log('🚀 ~ AppLayout ~ path:', pathname);
-  const [title, setTitle] = React.useState<string>('');
+  // const [title, setTitle] = React.useState<string>('');
 
-  React.useEffect(() => {
-    const getTitle = appRouters.find((item: any) => item.path === pathname);
-    if (getTitle) {
-      setTitle(getTitle.title);
-    }
-  }, [pathname]);
+  // React.useEffect(() => {
+  //   const getTitle = appRouters.find((item: any) => item.path === pathname);
+  //   if (getTitle) {
+  //     setTitle(getTitle.title);
+  //   }
+  // }, [pathname]);
 
   const renderLayout = () => {
     return (
@@ -38,9 +38,10 @@ const AppLayout = React.memo((props: any) => {
             style={{ background: '#fff', minHeight: 52, padding: 0 }}
             className="l-header"
           >
-            <Header title={title} />
+            <Header
+            //  title={title} 
+            />
           </Layout.Header>
-
           <Layout.Content
             className="l-content"
             style={{
@@ -52,7 +53,7 @@ const AppLayout = React.memo((props: any) => {
             }}
           >
             <Switch>
-              {pathname === '/home' && <Redirect from="/" to="/dashboard" />}
+              {pathname === '/' && <Redirect from="/" to="/dashboard" />}
               {appRouters
                 .filter((item: any) => !item.isLayout)
                 .map((route: any, index: number) => {
@@ -67,7 +68,7 @@ const AppLayout = React.memo((props: any) => {
                     />
                   );
                 })}
-              {pathname !== '/dashboard' && <NotFoundRoute />}
+              {pathname !== '/' && <NotFoundRoute />}
             </Switch>
           </Layout.Content>
           {/* <Content className="l-content" style={{ margin: 20 }}></Content> */}

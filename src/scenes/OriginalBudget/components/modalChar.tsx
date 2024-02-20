@@ -135,8 +135,7 @@ const modalChar: React.FC = () => {
                     label: '2025',
                   },
                 ]}
-              />
-        
+              />        
             <ComposedChart
               width={1000}
               height={400}
@@ -157,9 +156,9 @@ const modalChar: React.FC = () => {
               <YAxis label={{ value: 'Số lượng bán ra', angle: -90, position: 'insideLeft' }} />
               <Tooltip />
               {/* <Legend /> */}
-              <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+              {/* <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
               <Bar dataKey="Target" barSize={20} fill="#413ea0" />
-              <Line type="monotone" dataKey="RealWS" stroke="#ff7300" />
+              {/* <Line type="monotone" dataKey="RealWS" stroke="#ff7300" /> */}
             </ComposedChart>        
       </Modal>
     </>
