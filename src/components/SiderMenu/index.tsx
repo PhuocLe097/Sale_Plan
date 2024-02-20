@@ -21,17 +21,18 @@ const SiderMenu = (props: ISiderMenuProps) => {
 
   const onCollapse = () => setCollapsed(!collapsed);
   React.useEffect(() => {}, []);
-  const path:any = location.pathname.match(/[^/]+/g);
-  const path2 = path[0]
-  const getIndex = appRouters
-    .filter((item: any) => !item.isLayout && item.showInMenu)
-    .find((route: any, index: number) => {
-      if (route.permission && !isGranted(route.permission)) return null;
-      if (path2 === route.name) {
-        route.index = index;
-        return route;  
-      }
-    });
+  // const path:any = location.pathname.match(/[^/]+/g);
+  // const path2 = path[0]
+
+  // const getIndex = appRouters
+  //   .filter((item: any) => !item.isLayout && item.showInMenu)
+  //   .find((route: any, index: number) => {
+  //     if (route.permission && !isGranted(route.permission)) return null;
+  //     if (path2 === route.name) {
+  //       route.index = index;
+  //       return route;  
+  //     }
+  //   });
   // const path = currentRoute.path.match(/[^/]+/g);
   // console.log("🚀 ~ SiderMenu ~ path:", path[0],)
   // const getIndex = appRouters.filter((item: any)=>
@@ -66,7 +67,8 @@ const SiderMenu = (props: ISiderMenuProps) => {
         </Col>
       )}
       <Menu theme="dark" 
-      defaultSelectedKeys={[getIndex ? `${getIndex.index}` : '0']} 
+      // defaultSelectedKeys={[getIndex ? `${getIndex.index}` : '0']} 
+      selectedKeys={[currentRoute ? currentRoute.path : '']}
       mode="inline">
         {appRouters
           .filter((item: any) => !item.isLayout && item.showInMenu)

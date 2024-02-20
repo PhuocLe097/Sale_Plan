@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import './index.css';
 import type { TableProps } from 'antd';
 import ModalChar from '../components/modalChar';
 import { Button, Col, Descriptions, Layout, Row, Space, Table, Tag } from 'antd';
 import type { DescriptionsProps } from 'antd';
-// const { id } = useParams<{ id: string }>();
-// console.log("🚀 ~ id:", id)
+import { inject, observer } from 'mobx-react';
+import Stores from '../../../stores/storeIdentifier';
+import titleStore from '../../../stores/titleStore';
+
+
 interface DataType {
   key: string;
   precious: string;
@@ -253,6 +256,9 @@ const dataMonth: DataTypeMonth[] = [
 ];
 
 const index = () => {
+  useEffect(()=>{
+    titleStore
+  },[titleStore])
   return (
     <Layout className="originalBudget-Detail">
       <Row>
@@ -293,4 +299,5 @@ const index = () => {
   );
 };
 
-export default index;
+// export default index;
+export default inject(Stores.TitleStore)(observer(index));

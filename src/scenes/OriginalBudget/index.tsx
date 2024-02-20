@@ -24,7 +24,7 @@ const columns: TableProps<DataType>['columns'] = [
       <Space size="middle">
         <NavLink
           to={{
-            pathname: `/original-Budget/detail/${record.key}`,
+            pathname: `/original-Budget-detail/${record.key}`,
             state: `original-detail - ${record.customerName} - ${record.warehouse ? 'Có kho đối tác' : 'Không có kho đối tác'} `,
           }}
         >
