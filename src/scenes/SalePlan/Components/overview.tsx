@@ -1,12 +1,13 @@
 import { Col, Descriptions, Layout, Row, Table, TableColumnsType } from 'antd';
 import React, { useState } from 'react';
+import GenericTable from '../../../components/Table';
 
 const columnsTableChillren: TableColumnsType<any> = [
   {
     title: '',
     dataIndex: 'name',
-    key: 'name'
-        // fixed: 'left',
+    key: 'name',
+    // fixed: 'left',
     // render: (data: string) => (
     //   <span>
     //     <b>{data}</b>
@@ -16,44 +17,38 @@ const columnsTableChillren: TableColumnsType<any> = [
   {
     title: <p className="table-title">Actual MTD</p>,
     dataIndex: 'actualMtd',
-    key: 'actualMtd'
-
+    key: 'actualMtd',
   },
   {
     title: <p className="table-title">OB this month</p>,
     dataIndex: 'obThisMonth',
-    key: 'obThisMonth'
-
+    key: 'obThisMonth',
   },
   {
     title: <p className="table-title">Target WS</p>,
     dataIndex: 'targetWs',
-    key: 'targetWs'
-
+    key: 'targetWs',
   },
   {
     title: <p className="table-title">Forecast WS</p>,
     dataIndex: 'forecasrtWs',
-    key: 'forecasrtWs'
-
+    key: 'forecasrtWs',
   },
   {
     title: <p className="table-title">Actual QTD</p>,
     dataIndex: 'actualQtd',
-    key: 'actualQtd'
-
+    key: 'actualQtd',
   },
   {
     title: <p className="table-title">OB this quarter</p>,
     dataIndex: 'obThisQuarter',
-    key: 'obThisQuarter'
-
+    key: 'obThisQuarter',
   },
   {
     title: <p className="table-title">Target WS</p>,
     dataIndex: 'targetWs3Month',
-    key: 'targetWs3Month'
-    }
+    key: 'targetWs3Month',
+  },
 ];
 
 const columnsTable: TableColumnsType<any> = [
@@ -63,8 +58,8 @@ const columnsTable: TableColumnsType<any> = [
     key: 'name',
     // width: 200,
     // fixed: 'left',
-    // render: (data: string) => (      
-    //     data  
+    // render: (data: string) => (
+    //     data
     // ),
   },
   {
@@ -124,7 +119,7 @@ interface DataTypeTable {
   actualQtd: string;
   obThisQuarter: string;
   targetWs3Month: string;
-  dataChillren?: DataTypeTable[];
+  dataChildren?: DataTypeTable[];
 }
 const dataTable1: DataTypeTable[] = [
   {
@@ -162,7 +157,7 @@ const dataTable2: DataTypeTable[] = [
     actualQtd: '',
     obThisQuarter: '',
     targetWs3Month: '',
-    dataChillren: [
+    dataChildren: [
       {
         key: '1',
         name: 'Hud H1N',
@@ -173,7 +168,7 @@ const dataTable2: DataTypeTable[] = [
         actualQtd: '',
         obThisQuarter: '',
         targetWs3Month: '',
-        dataChillren: [
+        dataChildren: [
           {
             key: '1',
             name: 'Total Amount (VNĐ)',
@@ -208,7 +203,7 @@ const dataTable2: DataTypeTable[] = [
         actualQtd: '',
         obThisQuarter: '',
         targetWs3Month: '',
-        dataChillren: [
+        dataChildren: [
           {
             key: '1',
             name: 'Total Amount (VNĐ)',
@@ -243,7 +238,7 @@ const dataTable2: DataTypeTable[] = [
         actualQtd: '',
         obThisQuarter: '',
         targetWs3Month: '',
-        dataChillren: [
+        dataChildren: [
           {
             key: '1',
             name: 'Total Amount (VNĐ)',
@@ -280,6 +275,41 @@ const dataTable2: DataTypeTable[] = [
     actualQtd: '',
     obThisQuarter: '',
     targetWs3Month: '',
+    dataChildren: [
+      {
+        key: '1',
+        name: 'Hud H1N',
+        actualMtd: '',
+        obThisMonth: '',
+        targetWs: '',
+        forecasrtWs: '',
+        actualQtd: '',
+        obThisQuarter: '',
+        targetWs3Month: '',
+      },
+      {
+        key: '2',
+        name: 'Hud H1N',
+        actualMtd: '',
+        obThisMonth: '',
+        targetWs: '',
+        forecasrtWs: '',
+        actualQtd: '',
+        obThisQuarter: '',
+        targetWs3Month: '',
+      },
+      {
+        key: '3',
+        name: 'Thiết bị cảm biến áp xuất lốp, H2AS HUD',
+        actualMtd: '',
+        obThisMonth: '',
+        targetWs: '',
+        forecasrtWs: '',
+        actualQtd: '',
+        obThisQuarter: '',
+        targetWs3Month: '',
+      },
+    ],
   },
   {
     key: '4',
@@ -294,12 +324,11 @@ const dataTable2: DataTypeTable[] = [
   },
 ];
 const Overview = () => {
-
-const numberColumn = 100 / columnsTableChillren.length + '%';
-const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
- ...item,
-  width: numberColumn
-}))
+  const numberColumn = 100 / columnsTableChillren.length + '%';
+  const columnsTableChillren1 = columnsTableChillren?.map((item: any) => ({
+    ...item,
+    width: numberColumn,
+  }));
 
   return (
     <Layout className="salePlan-Detail-Overview">
@@ -326,7 +355,7 @@ const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
           </h3>
         </Col>
         <Col className="salePlan-Detail-Table" span={24}>
-          <Table
+          {/* <Table
             columns={columnsTable}
             dataSource={dataTable2}
             rowClassName='salePlan-Detail-Table-row'  
@@ -340,6 +369,7 @@ const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
                   // showHeader={false}
                   rowClassName='salePlan-Detail-Table-row-chillren'
                   bordered
+
                   dataSource={record.dataChillren}
                   pagination={false}                                 
                   expandable={{                                        
@@ -348,7 +378,7 @@ const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
                         columns={columnsTableChillren1}
                         showHeader={false}
                         bordered
-                        dataSource={record.dataChillren}
+                        dataSource={record.dataChildren}
                         pagination={false}                    
                       />
                     ),
@@ -356,6 +386,12 @@ const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
                 />
               ),
             }}
+          /> */}
+          <GenericTable
+            dataTable={dataTable1}
+            columnsTable={columnsTable}
+            // columnsTableChildren={columnsTableChillren1}
+            // dataSearch={dataSearch}
           />
         </Col>
       </Row>

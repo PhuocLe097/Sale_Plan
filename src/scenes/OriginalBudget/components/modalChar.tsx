@@ -1,4 +1,4 @@
-import React, { PureComponent, useState } from 'react';
+import React, { PureComponent, useEffect, useState } from 'react';
 import {
   ComposedChart,
   Line,
@@ -13,7 +13,11 @@ import {
 } from 'recharts';
 import { Button, Col, Layout, Modal, Row, Select } from 'antd';
 
-const modalChar: React.FC = () => {
+interface chartProps {
+  chartWidth: number | undefined;
+}
+
+const modalChar: React.FC<chartProps> = ({ chartWidth }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -115,7 +119,7 @@ const modalChar: React.FC = () => {
         footer={false}
         onOk={handleOk}
         onCancel={handleCancel}
-        width={1000}
+        width={chartWidth}
       >
               <Select                
                 placeholder="Chọn năm"

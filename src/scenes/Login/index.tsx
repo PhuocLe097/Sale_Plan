@@ -2,8 +2,8 @@ import './index.css';
 
 import * as React from 'react';
 
-import { Button, Card,  Form, Input, Row, Space } from 'antd';
-import {  KeyOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Card, Form, Input, Row, Space } from 'antd';
+import { KeyOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { inject, observer } from 'mobx-react';
 
 import AccountStore from '../../stores/accountStore';
@@ -52,15 +52,20 @@ const Login: React.FC<ILoginProps> = ({ authenticationStore, accountStore, locat
 
         <FormItem name={'userNameOrEmailAddress'} rules={rules.userNameOrEmailAddress}>
           <Input
-            placeholder='Username'
-            prefix={<UserOutlined  style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="Username"
+            prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
             size="large"
           />
         </FormItem>
 
-        {/* <FormItem name={'password'} rules={rules.password}>
-                <Input placeholder={'Password'} prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" size="large" />
-        </FormItem> */}
+        <FormItem name={'password'} rules={rules.password}>
+          <Input
+            placeholder={'Password'}
+            prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+            type="password"
+            size="large"
+          />
+        </FormItem>
 
         <Row justify="end">
           <Button htmlType={'submit'} type="primary" ghost>

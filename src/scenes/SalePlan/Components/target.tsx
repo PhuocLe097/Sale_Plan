@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 type InputRef = GetRef<typeof Input>;
 type FormInstance<T> = GetRef<typeof Form<T>>;
 
-const EditableContext = React.createContext<FormInstance<any> | null>(null);
+// const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 interface Item {
   key: string;
@@ -36,29 +36,29 @@ interface EditableCellProps {
   handleSave: (record: Item) => void;
 }
 
-const EditableCell: React.FC<EditableCellProps> = ({
-  title,
-  editable,
-  children,
-  dataIndex,
-  record,
-  handleSave,
-  ...restProps
-}) => {
-  const [editing, setEditing] = useState(false);
-  const inputRef = useRef<InputRef>(null);
-  const form = useContext(EditableContext)!;
+// const EditableCell: React.FC<EditableCellProps> = ({
+//   title,
+//   editable,
+//   children,
+//   dataIndex,
+//   record,
+//   handleSave,
+//   ...restProps
+// }) => {
+//   const [editing, setEditing] = useState(false);
+//   const inputRef = useRef<InputRef>(null);
+//   const form = useContext(EditableContext)!;
 
-  useEffect(() => {
-    if (editing) {
-      inputRef.current!;
-    }
-  }, [editing]);
+//   useEffect(() => {
+//     if (editing) {
+//       inputRef.current!;
+//     }
+//   }, [editing]);
 
-  const toggleEdit = () => {
-    setEditing(!editing);
-    form.setFieldsValue({ [dataIndex]: record[dataIndex] });
-  };
+//   const toggleEdit = () => {
+//     setEditing(!editing);
+//     form.setFieldsValue({ [dataIndex]: record[dataIndex] });
+//   };
 
   const save = async () => {
     try {
@@ -70,33 +70,34 @@ const EditableCell: React.FC<EditableCellProps> = ({
     }
   };
 
-  let childNode = children;
 
-  if (editable) {
-    childNode = editing ? (
-      <Form.Item
-        style={{ margin: 0 }}
-        name={dataIndex}
-        rules={[
-          {
-            required: true,
-            message: `${title} is required.`,
-          },
-        ]}
-      >
-        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
-      </Form.Item>
-    ) : (
-      <div className="editable-cell-value-wrap" style={{ paddingRight: 24 }} onClick={toggleEdit}>
-        {children}
-      </div>
-    );
-  }
+//   let childNode = children;
 
-  return <td {...restProps}>{childNode}</td>;
-};
+//   if (editable) {
+//     childNode = editing ? (
+//       <Form.Item
+//         style={{ margin: 0 }}
+//         name={dataIndex}
+//         rules={[
+//           {
+//             required: true,
+//             message: `${title} is required.`,
+//           },
+//         ]}
+//       >
+//         <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+//       </Form.Item>
+//     ) : (
+//       <div className="editable-cell-value-wrap" style={{ paddingRight: 24 }} onClick={toggleEdit}>
+//         {children}
+//       </div>
+//     );
+//   }
 
-type EditableTableProps = Parameters<typeof Table>[0];
+//   return <td {...restProps}>{childNode}</td>;
+// };
+
+// type EditableTableProps = Parameters<typeof Table>[0];
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 //-------------------------------------------------------------------------- data and column table -----------------------------------------------------------
@@ -945,28 +946,24 @@ const target = () => {
     setDataSource(newData);
   };
 
-  const components = {
-    body: {
-      row: EditableRow,
-      cell: EditableCell,
-    },
-  };
 
-  const columns = defaultColumns.map((col) => {
-    if (!col.editable) {
-      return col;
-    }
-    return {
-      ...col,
-      onCell: (record: DataType) => ({
-        record,
-        editable: col.editable,
-        dataIndex: col.dataIndex,
-        title: col.title,
-        handleSave,
-      }),
-    };
-  });
+//   const columns = defaultColumns.map((col) => {
+//     if (!col.editable) {
+//       return col;
+//     }
+//     return {
+//       ...col,
+//       onCell: (record: DataType) => ({
+//         record,
+//         editable: col.editable,
+//         dataIndex: col.dataIndex,
+//         title: col.title,
+//         handleSave,
+//       }),
+//     };
+//   });
+
+//   //-------------------------------------------------------------------------- func table -----------------------------------------------------------
 
   return (
     <Layout className="salePlan-Detail-Target">
@@ -1057,6 +1054,7 @@ const target = () => {
       </Row>
     </Layout>
   );
+
 };
 
 export default target;
