@@ -13,20 +13,20 @@ const items: TabsProps['items'] = [
     key: '1',
     // label: 'Tổng quan',
     // children: (<Overview/>),
+    label: 'Forecast',
+    children:  (<Forecast/>),
+  },
+  {
+    key: '2',
     label: 'Target',
     children:  (<Target/>),
   },
   {
-    key: '2',
-    // label: 'Target',
-    // children:  (<Target/>),
+    key: '3',
+    // label: 'Forecast',
+    // children:  (<Forecast/>),
     label: 'Tổng quan',
     children: (<Overview/>),
-  },
-  {
-    key: '3',
-    label: 'Forecast',
-    children:  (<Forecast/>),
   },
 ];
 

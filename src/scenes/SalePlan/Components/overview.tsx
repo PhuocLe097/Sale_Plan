@@ -369,8 +369,9 @@ const Overview = () => {
                   // showHeader={false}
                   rowClassName='salePlan-Detail-Table-row-chillren'
                   bordered
-                  dataSource={record.dataChildren}
-                  pagination={false}                  
+
+                  dataSource={record.dataChillren}
+                  pagination={false}                                 
                   expandable={{                                        
                     expandedRowRender: (record) => (
                       <Table
