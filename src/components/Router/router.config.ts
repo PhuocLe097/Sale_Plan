@@ -71,15 +71,21 @@ export const appRouters: any = [
     component: LoadableComponent(() => import('../../scenes/SalePlan')),
   },
   {
-    path: '/original-Budget/detail/:id',
-    name: 'OriginalBudgetDetail',
+    path: '/original-Budget-detail/:id',
+    name: 'original-Budget-detail',
     permission: '',
     title: 'Original Budget Detail',
     showInMenu: false,
     component: LoadableComponent(() => import('../../scenes/OriginalBudget/Detail')),
   },
-
-
+  {
+    path: '/sale-plan-detail/:id',
+    name: 'sale-plan-detail',
+    permission: '',
+    title: 'Sale Plan Detail',
+    showInMenu: false,
+    component: LoadableComponent(() => import('../../scenes/SalePlan/Detail')),
+  },
   {
     path: '/setting',
     name: 'setting',

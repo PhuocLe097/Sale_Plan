@@ -121,50 +121,49 @@ const modalChar: React.FC<chartProps> = ({ chartWidth }) => {
         onCancel={handleCancel}
         width={chartWidth}
       >
-        <Select
-          placeholder="Chọn năm"
-          optionFilterProp="children"
-          defaultValue="2024"
-          options={[
-            {
-              value: '2023',
-              label: '2023',
-            },
-            {
-              value: '2024',
-              label: '2024',
-            },
-            {
-              value: '2025',
-              label: '2025',
-            },
-          ]}
-        />
-
-        <ComposedChart
-          width={chartWidth}
-          height={400}
-          data={dataChar}
-          margin={{
-            top: 20,
-            right: 80,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid stroke="#f5f5f5" />
-          <XAxis
-            dataKey="name"
-            label={{ value: 'Tháng', position: 'insideBottomRight', offset: 0 }}
-            scale="band"
-          />
-          <YAxis label={{ value: 'Số lượng bán ra', angle: -90, position: 'insideLeft' }} />
-          <Tooltip />
-          {/* <Legend /> */}
-          <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-          <Bar dataKey="Target" barSize={20} fill="#413ea0" />
-          <Line type="monotone" dataKey="RealWS" stroke="#ff7300" />
-        </ComposedChart>
+              <Select                
+                placeholder="Chọn năm"
+                optionFilterProp="children"
+                defaultValue='2024'
+                options={[
+                  {
+                    value: '2023',
+                    label: '2023',
+                  },
+                  {
+                    value: '2024',
+                    label: '2024',
+                  },
+                  {
+                    value: '2025',
+                    label: '2025',
+                  },
+                ]}
+              />        
+            <ComposedChart
+              width={1000}
+              height={400}
+              data={dataChar}
+              margin={{
+                top: 20,
+                right: 80,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+              <CartesianGrid stroke="#f5f5f5" />
+              <XAxis
+                dataKey="name"
+                label={{ value: 'Tháng', position: 'insideBottomRight', offset: 0 }}
+                scale="band"
+              />
+              <YAxis label={{ value: 'Số lượng bán ra', angle: -90, position: 'insideLeft' }} />
+              <Tooltip />
+              {/* <Legend /> */}
+              {/* <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
+              <Bar dataKey="Target" barSize={20} fill="#413ea0" />
+              {/* <Line type="monotone" dataKey="RealWS" stroke="#ff7300" /> */}
+            </ComposedChart>        
       </Modal>
     </>
   );
