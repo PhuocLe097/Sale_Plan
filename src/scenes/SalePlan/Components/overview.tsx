@@ -341,7 +341,7 @@ const columnsTableChillren1 = columnsTableChillren?.map((item:any)=>({
                   rowClassName='salePlan-Detail-Table-row-chillren'
                   bordered
                   dataSource={record.dataChillren}
-                  pagination={false}                  
+                  pagination={false}                                 
                   expandable={{                                        
                     expandedRowRender: (record) => (
                       <Table

@@ -1,4 +1,4 @@
-import { Button, Col, DescriptionsProps, Form, GetRef, Input, Layout, Row, Table, Tag } from 'antd';
+import { Button, Col, Form, GetRef, Input, Layout, Row, Table, Tag } from 'antd';
 import { TableProps } from 'antd/lib';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 type InputRef = GetRef<typeof Input>;
@@ -8,9 +8,11 @@ const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 interface Item {
   key: string;
-  name: string;
-  age: string;
-  address: string;
+  chillrenEditname: string;
+  chillrenEditprecious1: string;
+  chillrenEditprecious2: string;
+  chillrenEditprecious3: string;
+  chillrenEditprecious4: string;
 }
 interface EditableRowProps {
   index: number;
@@ -61,7 +63,6 @@ const EditableCell: React.FC<EditableCellProps> = ({
   const save = async () => {
     try {
       const values = await form.validateFields();
-
       toggleEdit();
       handleSave({ ...record, ...values });
     } catch (errInfo) {
@@ -97,23 +98,27 @@ const EditableCell: React.FC<EditableCellProps> = ({
 
 type EditableTableProps = Parameters<typeof Table>[0];
 
-interface DataTypeEdit {
-  key: React.Key;
-  name: string;
-  age: string;
-  address: string;
-}
-
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 //-------------------------------------------------------------------------- data and column table -----------------------------------------------------------
+interface preciousChillrenEdit {
+  key: string;
+  idChillren?: string;
+  chillrenEditname: string;
+  chillrenEditprecious1: string;
+  chillrenEditprecious2: string;
+  chillrenEditprecious3: string;
+  chillrenEditprecious4: string;
+}
 interface DataType {
   key: string;
   name: string;
+  id?: string;
   precious1: string;
   precious2: string;
   precious3: string;
   precious4: string;
   preciousChillren?: DataType[];
+  preciousChillrenEdit?: preciousChillrenEdit[];
 }
 interface DataTypeMonth {
   key: string;
@@ -551,216 +556,24 @@ const columnsPrecious: TableProps<DataType>['columns'] = [
     key: 'precious4',
   },
 ];
-const dataPrecious: DataType[] = [
-  {
-    key: '1',
-    name: 'Camera hành trình',
-    precious1: '',
-    precious2: '',
-    precious3: '',
-    precious4: '',
-  },
-  {
-    key: '2',
-    name: 'HUD',
-    precious1: '',
-    precious2: '',
-    precious3: '',
-    precious4: '',
-    preciousChillren: [
-      {
-        key: '1',
-        name: 'Hud H1N',
-        precious1: '',
-        precious2: '',
-        precious3: '',
-        precious4: '',
-        preciousChillren: [
-          {
-            key: '1',
-            name: 'WS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '2',
-            name: 'RS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '3',
-            name: 'RSO',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '4',
-            name: 'Stock',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-        ],
-      },
-      {
-        key: '2',
-        name: 'Hud H1x',
-        precious1: '',
-        precious2: '',
-        precious3: '',
-        precious4: '',
-        preciousChillren: [
-          {
-            key: '1',
-            name: 'WS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '2',
-            name: 'RS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '3',
-            name: 'RSO',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '4',
-            name: 'Stock',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-        ],
-      },
-      {
-        key: '3',
-        name: 'Thiết bị cảm biến áp suất lốp, H2AS HUD',
-        precious1: '',
-        precious2: '',
-        precious3: '',
-        precious4: '',
-        preciousChillren: [
-          {
-            key: '1',
-            name: 'WS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '2',
-            name: 'RS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '3',
-            name: 'RSO',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '4',
-            name: 'Stock',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-        ],
-      },
-      {
-        key: '4',
-        name: 'Hud H1AS (ngoài)',
-        precious1: '',
-        precious2: '',
-        precious3: '',
-        precious4: '',
-        preciousChillren: [
-          {
-            key: '1',
-            name: 'WS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '2',
-            name: 'RS',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '3',
-            name: 'RSO',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-          {
-            key: '4',
-            name: 'Stock',
-            precious1: '',
-            precious2: '',
-            precious3: '',
-            precious4: '',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    key: '3',
-    name: 'Android box',
-    precious1: '',
-    precious2: '',
-    precious3: '',
-    precious4: '',
-  },
-  {
-    key: '4',
-    name: 'Bơm lốp - kích bình',
-    precious1: '',
-    precious2: '',
-    precious3: '',
-    precious4: '',
-  },
-];
 //-------------------------------------------------------------------------- data and column table -----------------------------------------------------------
 const target = () => {
+  const numberColumnMoth = 100 / columnsMonth.length + '%';
+  const columnsTableChillren = columnsMonth?.map((item: any) => ({
+    ...item,
+    width: numberColumnMoth,
+  }));
+  const numberColumnPrecious = 100 / columnsPrecious.length + '%';
+  const columnsTableChillrenPrecious = columnsPrecious?.map((item: any) => ({
+    ...item,
+    width: numberColumnPrecious,
+  }));
+
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '1',
       name: 'Hud H1N',
+      id: 'a',
       precious1: 'aaaa',
       precious2: '',
       precious3: '',
@@ -799,10 +612,49 @@ const target = () => {
           precious4: '',
         },
       ],
+      preciousChillrenEdit: [
+        {
+          key: '1',
+          idChillren: 'kasdjhfkasj',
+          chillrenEditname: 'WS',
+          chillrenEditprecious1: 'quyen',
+          chillrenEditprecious2: '1',
+          chillrenEditprecious3: '1',
+          chillrenEditprecious4: '1',
+        },
+        {
+          key: '2',
+          idChillren: 'kasdjhfkassssj',
+          chillrenEditname: 'RS',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '3',
+          idChillren: 'kasdjhfkaahasj',
+          chillrenEditname: 'RSO',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '4',
+          idChillren: 'kasdjhfskaahasj',
+          chillrenEditname: 'Stock',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+      ],
     },
     {
       key: '2',
       name: 'Hud H1x',
+      id: 'b',
       precious1: '',
       precious2: '',
       precious3: '',
@@ -839,12 +691,51 @@ const target = () => {
           precious2: '',
           precious3: '',
           precious4: '',
+        },
+      ],
+      preciousChillrenEdit: [
+        {
+          key: '1',
+          idChillren: 'kasdjhahasj',
+          chillrenEditname: 'WS',
+          chillrenEditprecious1: 'quyen',
+          chillrenEditprecious2: '1',
+          chillrenEditprecious3: '1',
+          chillrenEditprecious4: '1',
+        },
+        {
+          key: '2',
+          idChillren: 'ksdjhfkaahasj',
+          chillrenEditname: 'RS',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '3',
+          idChillren: 'kasdjhfsskaahasj',
+          chillrenEditname: 'RSO',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '4',
+          idChillren: 'kasj',
+          chillrenEditname: 'Stock',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
         },
       ],
     },
     {
       key: '3',
       name: 'Thiết bị cảm biến áp suất lốp, H2AS HUD',
+      id: 'c',
       precious1: '',
       precious2: '',
       precious3: '',
@@ -881,12 +772,51 @@ const target = () => {
           precious2: '',
           precious3: '',
           precious4: '',
+        },
+      ],
+      preciousChillrenEdit: [
+        {
+          key: '1',
+          idChillren: 'kasdjhfkaah',
+          chillrenEditname: 'WS',
+          chillrenEditprecious1: 'quyen',
+          chillrenEditprecious2: '1',
+          chillrenEditprecious3: '1',
+          chillrenEditprecious4: '1',
+        },
+        {
+          key: '2',
+          idChillren: 'djhfkaahasj',
+          chillrenEditname: 'RS',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '3',
+          idChillren: 'kasdjhfkasj',
+          chillrenEditname: 'RSO',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '4',
+          idChillren: 'kasdjj',
+          chillrenEditname: 'Stock',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
         },
       ],
     },
     {
       key: '4',
       name: 'Hud H1AS (ngoài)',
+      id: 'd',
       precious1: '',
       precious2: '',
       precious3: '',
@@ -925,50 +855,92 @@ const target = () => {
           precious4: '',
         },
       ],
+      preciousChillrenEdit: [
+        {
+          key: '1',
+          idChillren: 'khfkaahasj',
+          chillrenEditname: 'WS',
+          chillrenEditprecious1: 'quyen',
+          chillrenEditprecious2: '1',
+          chillrenEditprecious3: '1',
+          chillrenEditprecious4: '1',
+        },
+        {
+          key: '2',
+          idChillren: 'kasdkaahasj',
+          chillrenEditname: 'RS',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '3',
+          idChillren: 'kasdjhfppppasj',
+          chillrenEditname: 'RSO',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+        {
+          key: '4',
+          idChillren: 'kasdjhfkaaj',
+          chillrenEditname: 'Stock',
+          chillrenEditprecious1: '',
+          chillrenEditprecious2: '',
+          chillrenEditprecious3: '',
+          chillrenEditprecious4: '',
+        },
+      ],
     },
   ]);
-
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
     {
-      title: '',
-      dataIndex: 'name',
-      key: 'name',
-      editable: true,
-      render: (data: string) => (
-        <span>
-          <b>{data}</b>
-        </span>
-      ),
+      title: 'chillrenEditname',
+      dataIndex: 'chillrenEditname',
+      width: numberColumnPrecious, 
     },
     {
       title: 'Quý 1',
-      dataIndex: 'precious1',
-      key: 'precious1',
+      dataIndex: 'chillrenEditprecious1',
       editable: true,
+      width: numberColumnPrecious,
     },
     {
       title: 'Quý 2',
-      dataIndex: 'precious2',
-      key: 'precious3',
+      dataIndex: 'chillrenEditprecious2',
+      editable: true,
+      width: numberColumnPrecious,
     },
     {
       title: 'Quý 3',
-      dataIndex: 'precious3',
-      key: 'precious3',
+      dataIndex: 'chillrenEditprecious3',
+      editable: true,
+      width: numberColumnPrecious,
     },
     {
       title: 'Quý 4',
-      dataIndex: 'precious4',
-      key: 'precious4',
+      dataIndex: 'chillrenEditprecious4',
+      editable: true,
+      width: numberColumnPrecious,
     },
   ];
-  const handleSave = (row: DataType) => {
-    const newData = [...dataSource];
-    const index = newData.findIndex((item) => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, {
-      ...item,
-      ...row,
+  const handleSave = (row: preciousChillrenEdit) => {
+    const newData: DataType[] = [...dataSource];
+
+    newData.forEach((item: DataType) => {
+      if (item.preciousChillrenEdit) {
+        const preciousChillrenEdit: preciousChillrenEdit[] = [...item.preciousChillrenEdit];
+        const index: number = preciousChillrenEdit.findIndex(
+          (child: preciousChillrenEdit) => child.idChillren === row?.idChillren
+        );
+        if (index !== -1) {
+          const updatedItem: preciousChillrenEdit = { ...preciousChillrenEdit[index], ...row };
+          preciousChillrenEdit.splice(index, 1, updatedItem);
+        }
+        item.preciousChillrenEdit = preciousChillrenEdit;
+      }
     });
     setDataSource(newData);
   };
@@ -996,18 +968,6 @@ const target = () => {
     };
   });
 
-  //-------------------------------------------------------------------------- func table -----------------------------------------------------------
-
-  const numberColumnMoth = 100 / columnsMonth.length + '%';
-  const columnsTableChillren = columnsMonth?.map((item: any) => ({
-    ...item,
-    width: numberColumnMoth,
-  }));
-  const numberColumnPrecious = 100 / columnsPrecious.length + '%';
-  const columnsTableChillrenPrecious = columnsPrecious?.map((item: any) => ({
-    ...item,
-    width: numberColumnPrecious,
-  }));
   return (
     <Layout className="salePlan-Detail-Target">
       <Row className="salePlan-Detail-Target-header">
@@ -1022,7 +982,7 @@ const target = () => {
             Lưu lại
           </Button>
           <Button className="salePlan-Detail-Target-header-btn-item" type="primary">
-            yêu cầu duyệt
+            Yêu cầu duyệt
           </Button>
         </Col>
       </Row>
@@ -1069,13 +1029,12 @@ const target = () => {
       <Row>
         <Col span={24}>
           <h3 className="salePlan-Detail-Title">
-            bảng target theo quý theo số lượng từng sản phẩm
+            Bảng target theo quý theo số lượng từng sản phẩm
           </h3>
         </Col>
         <Col className="salePlan-Detail-Table" span={24}>
           <Table
             columns={columnsTableChillrenPrecious}
-            // dataSource={dataPrecious}
             dataSource={dataSource}
             bordered={true}
             pagination={false}
@@ -1084,10 +1043,8 @@ const target = () => {
             expandable={{
               expandedRowRender: (record) => (
                 <Table
-                  // columns={columnsTableChillrenPrecious}
-                  // dataSource={record.preciousChillren}
                   components={components}
-                  dataSource={record.preciousChillren}
+                  dataSource={record.preciousChillrenEdit}
                   columns={columns as ColumnTypes}
                   showHeader={false}
                   bordered
