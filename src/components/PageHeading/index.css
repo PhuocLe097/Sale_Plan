@@ -1,0 +1,14 @@
+.wrapped {
+  margin: 10px 0;
+}
+.outer {
+  width: fit-content;
+  border-radius: 6px;
+  border: 1px solid #4f67e3;
+  padding: 4px 8px;
+  box-shadow: 2px 2px 2px #5f76e8d2;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4f67e3;
+}
+/*# sourceMappingURL=index.css.map */
